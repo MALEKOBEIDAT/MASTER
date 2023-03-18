@@ -1,0 +1,153 @@
+﻿@model Mster.Models.Estate
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_side-bar and footer.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Estate</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EstatePrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EstatePrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image5)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image5)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image6)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image6)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image7)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image7)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EstateSize)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EstateSize)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EstateLocation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EstateLocation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EstateStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EstateStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RoomNum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RoomNum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BathRoomNum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BathRoomNum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BalconyNum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BalconyNum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AspNetUser.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUser.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.category.CategoryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.category.CategoryName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

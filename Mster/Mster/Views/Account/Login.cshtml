@@ -1,0 +1,146 @@
+﻿@using Mster.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+    Layout = null;
+
+}
+
+<!-- basic -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- mobile metas -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+<!-- site metas -->
+<title>Pluto - Responsive Bootstrap Admin Panel Templates</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="">
+<!-- site icon -->
+<link rel="icon" href="~/Admin-style/images/fevicon.png" type="image/png" />
+<!-- bootstrap css -->
+<link rel="stylesheet" href="~/Admin-style/css/bootstrap.min.css" />
+<!-- site css -->
+<link rel="stylesheet" href="~/Admin-style/style.css" />
+<!-- responsive css -->
+<link rel="stylesheet" href="~/Admin-style/css/responsive.css" />
+<!-- color css -->
+<link rel="stylesheet" href="~/Admin-style/css/colors.css" />
+<!-- select bootstrap -->
+<link rel="stylesheet" href="~/Admin-style/css/bootstrap-select.css" />
+<!-- scrollbar css -->
+<link rel="stylesheet" href="~/Admin-style/css/perfect-scrollbar.css" />
+<!-- custom css -->
+<link rel="stylesheet" href="~/Admin-style/css/custom.css" />
+<!-- calendar file css -->
+<link rel="stylesheet" href="~/Admin-style/js/semantic.min.css" />
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<div class="inner_page login">
+    <div class="full_container">
+        <div class="container">
+            <div class="center verticle_center full_height">
+                <div class="login_section">
+                    <div class="logo_login">
+                        <div class="center">
+
+                            <a href="/Home/Index">
+                                <h1 style="color:rgb(255, 255, 255)  ;">Buyutna</h1>
+                            </a>
+                            <!--                            <!--
+    <img width="210" src="images/logo/logo.png" alt="#" />
+
+    -->
+                        </div>
+                    </div>
+                    <div class="login_form">
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <section id="loginForm">
+                                    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        <h4>Use a local account to log in.</h4>
+                                        <hr />
+                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+
+
+
+
+
+                                        <div class="form-group">
+                                            <label for="Email" class="col-md-2 control-label">Email</label>
+                                            <div class="col-md-10">
+                                                <input type="email" id="Email" name="Email" class="form-control" />
+                                                <span class="text-danger"></span>
+                                            </div>
+                                        </div>
+
+
+
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                                            <div class="col-md-10">
+                                                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-offset-2 col-md-10">
+                                                <div class="checkbox">
+                                                    @Html.CheckBoxFor(m => m.RememberMe)
+                                                    @Html.LabelFor(m => m.RememberMe)
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-offset-2 col-md-10">
+                                                <input type="submit"  class="btn btn-default" />
+                                            </div>
+                                        </div>
+                                        <p>
+                                            @Html.ActionLink("Register as a new user", "Register")
+                                        </p>
+                                        @* Enable this once you have account confirmation enabled for password reset functionality
+                                            <p>
+                                                @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                                            </p>*@
+                                    }
+                                </section>
+                            </div>
+                            <div class="col-md-4">
+                                <section id="socialLoginForm">
+                                    @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="~/Admin-style/js/jquery.min.js"></script>
+    <script src="~/Admin-style/js/popper.min.js"></script>
+    <script src="~/Admin-style/js/bootstrap.min.js"></script>
+    <!-- wow animation -->
+    <script src="~/Admin-style/js/animate.js"></script>
+    <!-- select country -->
+    <script src="~/Admin-style/js/bootstrap-select.js"></script>
+    <!-- nice scrollbar -->
+    <script src="~/Admin-style/js/perfect-scrollbar.min.js"></script>
+    <script>var ps = new PerfectScrollbar('#sidebar');</script>
+    <!-- custom js -->
+    <script src="~/Admin-style/js/custom.js"></script>
+    </div>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

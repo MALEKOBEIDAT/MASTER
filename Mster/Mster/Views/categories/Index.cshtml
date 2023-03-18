@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Mster.Models.category>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_side-bar and footer.cshtml";
+}
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryImage)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoryName)
+        </td>
+        <td>
+            @*@Html.DisplayFor(modelItem => item.CategoryImage)*@
+
+            <img class="thumbnail" src="~/image/@item.CategoryImage" alt="Alternate Text" width="100px" height="100px" />
+
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.CategoryId }, new { @class = "btn btn-primary" }) 
+            @Html.ActionLink("Details", "Details", new { id = item.CategoryId }, new { @class = "btn btn-success" }) 
+            @Html.ActionLink("Create", "Create", new { @class = "btn btn-danger" })
+
+            @Html.ActionLink("Delete", "Delete", new { id = item.CategoryId }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

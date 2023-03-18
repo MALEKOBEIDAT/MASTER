@@ -1,0 +1,138 @@
+﻿@model IEnumerable<Mster.Models.Estate>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_side-bar and footer.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        @*<th>
+            @Html.DisplayNameFor(model => model.EstatePrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image5)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image6)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image7)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.EstateSize)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EstateLocation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EstateStatus)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.RoomNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BathRoomNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BalconyNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AspNetUser.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.category.CategoryName)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+
+   
+                      <tr>
+        <!--<td>
+            @Html.DisplayFor(modelItem => item.EstatePrice)
+        </td>
+        <td>-->
+            @*@Html.DisplayFor(modelItem => item.Image1)*@
+            <!--<img class="thumbnail" src="~/image/@item.Image1" alt="Alternate Text" width="100px" height="100px" />
+
+
+        </td>
+        <td>
+            <img class="thumbnail" src="~/image/@item.Image2" alt="Alternate Text" width="100px" height="100px" />
+        </td>
+        <td>
+            <img class="thumbnail" src="~/image/@item.Image3" alt="Alternate Text" width="100px" height="100px" />
+        </td>
+        <td>
+            <img class="thumbnail" src="~/image/@item.Image4" alt="Alternate Text" width="100px" height="100px" />
+        </td>
+        <td>
+            <img class="thumbnail" src="~/image/@item.Image5" alt="Alternate Text" width="100px" height="100px" />
+        </td>
+        <td>
+            <img class="thumbnail" src="~/image/@item.Image6" alt="Alternate Text" width="100px" height="100px" />
+        </td>
+        <td>
+            <img class="thumbnail" src="~/image/@item.Image7" alt="Alternate Text" width="100px" height="100px" />
+        </td>-->
+        <td>
+            @Html.DisplayFor(modelItem => item.EstateSize)
+
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EstateLocation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EstateStatus)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.RoomNum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BathRoomNum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BalconyNum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AspNetUser.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.category.CategoryName)
+        </td>*@
+                      <td>
+                          @*@Html.ActionLink("Edit", "Edit", new { id = item.EstateId }) |
+                          @Html.ActionLink("Details", "Details", new { id = item.EstateId }) |*@
+                          @Html.ActionLink("Delete", "Delete", new { id = item.EstateId } ,new {@class="btn btn-warning"})
+                          @Html.ActionLink("Accept", "Accept", new { id = item.EstateId }, new { @class = "btn btn-success" })
+                          @Html.ActionLink("Reject", "Reject", new { id = item.EstateId }, new { @class = "btn btn-danger" })
+
+
+
+
+                      </td>
+    </tr>
+
+                }
+  
+
+</table>

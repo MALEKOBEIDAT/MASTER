@@ -1,0 +1,298 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BuytnaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="BuytnaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="C__MigrationHistory" EntityType="BuytnaModel.C__MigrationHistory" />
+    <EntitySet Name="AspNetRoles" EntityType="BuytnaModel.AspNetRole" />
+    <EntitySet Name="AspNetUserClaims" EntityType="BuytnaModel.AspNetUserClaim" />
+    <EntitySet Name="AspNetUserLogins" EntityType="BuytnaModel.AspNetUserLogin" />
+    <EntitySet Name="AspNetUsers" EntityType="BuytnaModel.AspNetUser" />
+    <EntitySet Name="categories" EntityType="BuytnaModel.category" />
+    <EntitySet Name="Contacts" EntityType="BuytnaModel.Contact" />
+    <EntitySet Name="Estates" EntityType="BuytnaModel.Estate" />
+    <EntitySet Name="Orders" EntityType="BuytnaModel.Order" />
+    <EntitySet Name="sysdiagrams" EntityType="BuytnaModel.sysdiagram" />
+    <EntitySet Name="Transactions" EntityType="BuytnaModel.Transaction" />
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="BuytnaModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="BuytnaModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Estates__UserId__49C3F6B7" Association="BuytnaModel.FK__Estates__UserId__49C3F6B7">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="Estate" EntitySet="Estates" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Orders__UserId__4CA06362" Association="BuytnaModel.FK__Orders__UserId__4CA06362">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__UserI__5070F446" Association="BuytnaModel.FK__Transacti__UserI__5070F446">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="Transaction" EntitySet="Transactions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Estates__Categor__48CFD27E" Association="BuytnaModel.FK__Estates__Categor__48CFD27E">
+      <End Role="category" EntitySet="categories" />
+      <End Role="Estate" EntitySet="Estates" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Orders__EstateId__4D94879B" Association="BuytnaModel.FK__Orders__EstateId__4D94879B">
+      <End Role="Estate" EntitySet="Estates" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__Order__5165187F" Association="BuytnaModel.FK__Transacti__Order__5165187F">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="Transaction" EntitySet="Transactions" />
+    </AssociationSet>
+    <AssociationSet Name="AspNetUserRoles" Association="BuytnaModel.AspNetUserRoles">
+      <End Role="AspNetRole" EntitySet="AspNetRoles" />
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="C__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="AspNetRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUsers" Relationship="BuytnaModel.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaim">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="BuytnaModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaim" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogin">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="BuytnaModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogin" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUserClaims" Relationship="BuytnaModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
+    <NavigationProperty Name="AspNetUserLogins" Relationship="BuytnaModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
+    <NavigationProperty Name="Estates" Relationship="BuytnaModel.FK__Estates__UserId__49C3F6B7" FromRole="AspNetUser" ToRole="Estate" />
+    <NavigationProperty Name="Orders" Relationship="BuytnaModel.FK__Orders__UserId__4CA06362" FromRole="AspNetUser" ToRole="Order" />
+    <NavigationProperty Name="Transactions" Relationship="BuytnaModel.FK__Transacti__UserI__5070F446" FromRole="AspNetUser" ToRole="Transaction" />
+    <NavigationProperty Name="AspNetRoles" Relationship="BuytnaModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
+  </EntityType>
+  <EntityType Name="category">
+    <Key>
+      <PropertyRef Name="CategoryId" />
+    </Key>
+    <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="CategoryImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Estates" Relationship="BuytnaModel.FK__Estates__Categor__48CFD27E" FromRole="category" ToRole="Estate" />
+  </EntityType>
+  <EntityType Name="Contact">
+    <Key>
+      <PropertyRef Name="Cid" />
+    </Key>
+    <Property Name="FirstName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Subjectt" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Massege" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Cid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="Estate">
+    <Key>
+      <PropertyRef Name="EstateId" />
+    </Key>
+    <Property Name="EstateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryId" Type="Int32" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="EstatePrice" Type="Double" />
+    <Property Name="Image1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Image2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Image3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Image4" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Image5" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Image6" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Image7" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="EstateSize" Type="Double" />
+    <Property Name="EstateLocation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="EstateStatus" Type="Int32" />
+    <Property Name="RoomNum" Type="Int32" />
+    <Property Name="BathRoomNum" Type="Int32" />
+    <Property Name="BalconyNum" Type="Int32" />
+    <NavigationProperty Name="AspNetUser" Relationship="BuytnaModel.FK__Estates__UserId__49C3F6B7" FromRole="Estate" ToRole="AspNetUser" />
+    <NavigationProperty Name="category" Relationship="BuytnaModel.FK__Estates__Categor__48CFD27E" FromRole="Estate" ToRole="category" />
+    <NavigationProperty Name="Orders" Relationship="BuytnaModel.FK__Orders__EstateId__4D94879B" FromRole="Estate" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="OrderId" />
+    </Key>
+    <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderDate" Type="DateTime" Precision="3" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="EstateId" Type="Int32" />
+    <NavigationProperty Name="AspNetUser" Relationship="BuytnaModel.FK__Orders__UserId__4CA06362" FromRole="Order" ToRole="AspNetUser" />
+    <NavigationProperty Name="Estate" Relationship="BuytnaModel.FK__Orders__EstateId__4D94879B" FromRole="Order" ToRole="Estate" />
+    <NavigationProperty Name="Transactions" Relationship="BuytnaModel.FK__Transacti__Order__5165187F" FromRole="Order" ToRole="Transaction" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Transaction">
+    <Key>
+      <PropertyRef Name="TransactionId" />
+    </Key>
+    <Property Name="TransactionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Amount" Type="Double" />
+    <Property Name="TransactionDate" Type="DateTime" Precision="3" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="OrderId" Type="Int32" />
+    <NavigationProperty Name="AspNetUser" Relationship="BuytnaModel.FK__Transacti__UserI__5070F446" FromRole="Transaction" ToRole="AspNetUser" />
+    <NavigationProperty Name="Order" Relationship="BuytnaModel.FK__Transacti__Order__5165187F" FromRole="Transaction" ToRole="Order" />
+  </EntityType>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Type="BuytnaModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="BuytnaModel.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaim">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Type="BuytnaModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="BuytnaModel.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogin">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Estates__UserId__49C3F6B7">
+    <End Type="BuytnaModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+    <End Type="BuytnaModel.Estate" Role="Estate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Estate">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Orders__UserId__4CA06362">
+    <End Type="BuytnaModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+    <End Type="BuytnaModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__UserI__5070F446">
+    <End Type="BuytnaModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+    <End Type="BuytnaModel.Transaction" Role="Transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Transaction">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Estates__Categor__48CFD27E">
+    <End Type="BuytnaModel.category" Role="category" Multiplicity="0..1" />
+    <End Type="BuytnaModel.Estate" Role="Estate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="category">
+        <PropertyRef Name="CategoryId" />
+      </Principal>
+      <Dependent Role="Estate">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Orders__EstateId__4D94879B">
+    <End Type="BuytnaModel.Estate" Role="Estate" Multiplicity="0..1" />
+    <End Type="BuytnaModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estate">
+        <PropertyRef Name="EstateId" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="EstateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__Order__5165187F">
+    <End Type="BuytnaModel.Order" Role="Order" Multiplicity="0..1" />
+    <End Type="BuytnaModel.Transaction" Role="Transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="OrderId" />
+      </Principal>
+      <Dependent Role="Transaction">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AspNetUserRoles">
+    <End Type="BuytnaModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
+    <End Type="BuytnaModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+  </Association>
+</Schema>
